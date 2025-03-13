@@ -1,0 +1,20 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Drilling Tower -->
+  <g fill="#0056b3">
+    <rect x="20" y="10" width="40" height="5" rx="2" />
+    <rect x="30" y="5" width="20" height="50" rx="2" />
+    <rect x="20" y="45" width="40" height="5" rx="2" />
+    <rect x="25" y="15" width="5" height="30" rx="1" />
+    <rect x="35" y="15" width="5" height="30" rx="1" />
+    <rect x="45" y="15" width="5" height="30" rx="1" />
+  </g>
+  
+  <!-- Telemetry Waves -->
+  <path fill="none" stroke="#17a2b8" stroke-width="3" stroke-linecap="round"
+        d="M70,30 Q80,15 90,30 Q100,45 110,30 Q120,15 130,30" />
+  <path fill="none" stroke="#17a2b8" stroke-width="2" stroke-linecap="round" 
+        d="M70,40 Q80,25 90,40 Q100,55 110,40 Q120,25 130,40" />
+  
+  <!-- Company Name -->
+  <text x="140" y="35" font-family="Montserrat, sans-serif" font-size="18" font-weight="bold" fill="#003366">DrillTel</text>
+</svg>

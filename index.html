@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООО«Навигация-сервис» | Телеметрическое сопровождение бурения</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS - Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #17a2b8;
+            --accent-color: #ffc107;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --darker-color: #141619;
+            --gray-color: #6c757d;
+            --light-gray-color: #343a40;
+            --dark-blue: #0d47a1;
+            --body-font: 'Roboto', sans-serif;
+            --heading-font: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--body-font);
+            color: #e9ecef;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--dark-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--heading-font);
+            font-weight: 600;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+            background-color: var(--dark-blue);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            margin: 0 0.25rem;
+            transition: all 0.3s ease;
+            color: white !important;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .waitlist-btn {
+            background-color: var(--primary-color);
+            color: white !important;
+            border-radius: 50px;
+            padding: 0.5rem 1.25rem !important;
+        }
+
+        .waitlist-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--dark-blue) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background: url('https://images.unsplash.com/photo-1474692321929-4d0c27302b7e') center/cover no-repeat;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding-top: 76px; /* Navbar height */
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 0, 0, 0.7));
+            z-index: 1;
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-section .lead {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        .section-title {
+            position: relative;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 1rem auto 0;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-color);
+            margin-bottom: 3rem;
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: var(--darker-color);
+            padding: 6rem 0;
+        }
+
+        .service-card {
+            background-color: var(--dark-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--light-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+
+        /* Technology Section */
+        .technology-section {
+            padding: 6rem 0;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+        }
+
+        .tech-features {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 2rem;
+        }
+
+        .tech-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--light-gray-color);
+        }
+
+        .tech-features li i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+        }
+
+        .tech-details {
+            margin-top: 2rem;
+        }
+
+        .tech-details .detail-item {
+            margin-bottom: 1rem;
+        }
+
+        .tech-details .detail-title {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .tech-image-grid {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Clients Section */
+        .clients-section {
+            padding: 6rem 0;
+            background-color: var(--darker-color);
+            color: var(--light-color);
+        }
+
+        .client-card {
+            background-color: var(--dark-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-color);
+        }
+
+        .client-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .client-logo {
+            max-width: 160px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        /* Equipment Section */
+        .equipment-section {
+            padding: 6rem 0;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+        }
+
+        .equipment-card {
+            background-color: var(--darker-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            height: 100%;
+            transition: all 0.3s ease;
+            color: var(--light-color);
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .equipment-specs {
+            margin-top: 2rem;
+        }
+
+        .equipment-specs .spec-item {
+            margin-bottom: 0.75rem;
+            display: flex;
+        }
+
+        .equipment-specs .spec-title {
+            min-width: 180px;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 6rem 0;
+            background-color: var(--darker-color);
+            color: var(--light-color);
+        }
+
+        .contact-card {
+            background-color: var(--dark-color);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: var(--light-color);
+        }
+
+        .contact-info-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1rem;
+            min-width: 30px;
+        }
+
+        .contact-detail h5 {
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer h5 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-links, .contact-info {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer-links li, .contact-info li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            margin-left: 5px;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .waitlist-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 500px;
+                height: auto;
+                padding: 120px 0 80px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .about-section .order-lg-1 {
+                margin-top: 3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                padding: 100px 0 60px;
+            }
+            
+            .hero-section h1 {
+                font-size: 1.75rem;
+            }
+            
+            .service-card, .equipment-card, .contact-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <svg width="40" height="40" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Drilling Tower -->
+                    <g fill="#ffffff">
+                        <rect x="20" y="10" width="40" height="5" rx="2" />
+                        <rect x="30" y="5" width="20" height="50" rx="2" />
+                        <rect x="20" y="45" width="40" height="5" rx="2" />
+                        <rect x="25" y="15" width="5" height="30" rx="1" />
+                        <rect x="35" y="15" width="5" height="30" rx="1" />
+                        <rect x="45" y="15" width="5" height="30" rx="1" />
+                    </g>
+                    
+                    <!-- Telemetry Waves -->
+                    <path fill="none" stroke="#17a2b8" stroke-width="3" stroke-linecap="round"
+                        d="M70,30 Q80,15 90,30 Q100,45 110,30 Q120,15 130,30" />
+                    <path fill="none" stroke="#17a2b8" stroke-width="2" stroke-linecap="round" 
+                        d="M70,40 Q80,25 90,40 Q100,55 110,40 Q120,25 130,40" />
+                </svg>
+                Навигация-сервис
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Услуги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#technology">Телесистемы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#clients">Заказчики</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#equipment">Оборудование</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="display-4 fw-bold">ООО «Навигация-сервис»</h1>
+                    <p class="lead">Телеметрическое сопровождение бурения наклонных и горизонтальных скважин, боковых стволов, а также производство и поставка телесистем с электромагнитным каналом связи с последующим сервисным сопровождением.</p>
+                    <div class="mt-4">
+                        <a href="#services" class="btn btn-primary btn-lg me-2">Наши услуги</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Связаться с нами</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1556760544-74068565f05c" alt="Буровое оборудование" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title" data-aos="fade-up">Услуги</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Предлагаем услуги по сопровождению бурения наклонно-направленных и горизонтальных скважин.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-satellite-dish"></i>
+                        </div>
+                        <h3>Телеметрическое сопровождение</h3>
+                        <p>Телеметрическое и технологическое сопровождение работ с полной ответственностью за выполнение проектного профиля и работоспособность MWD-системы.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Горизонтальные скважины</h3>
+                        <p>Строительство скважин при предельном значении забойного давления 600 атм и температуре 90°С, с предоставлением технических средств и оборудования.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Пилотирование стволов</h3>
+                        <p>Услуги по пилотированию горизонтальных стволов по геологическим данным, обеспечивая точность проводки скважины.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Техническое сопровождение</h3>
+                        <p>Комплексное технико-технологическое сопровождение бурения горизонтальной скважины при помощи телесистемы, включая мобилизацию и настройку оборудования.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-lg-12" data-aos="fade-up">
+                    <div class="service-card">
+                        <h3>Процесс работы</h3>
+                        <p>В предлагаемую услугу по технико-технологическому сопровождению бурения горизонтальной скважины при помощи телесистемы входят следующие работы:</p>
+                        <ol>
+                            <li class="mb-2">Мобилизация оборудования и персонала для выполнения работ, в процессе которой выполняется проверка всего оборудования, его погрузка и перевозка на буровую.</li>
+                            <li class="mb-2">Подготовка к работе, в которую входит разгрузка оборудования на буровой, подключение электроэнергии к наземному оборудованию, обустройство персонала, установка антенн, тестирование всех систем.</li>
+                            <li class="mb-2">Сборка КНБК для выполнения направленного бурения, визирование телесистемы с забойным двигателем.</li>
+                            <li class="mb-2">Направленное бурение с телесистемой в процессе набора заданных параметров и проводки ствола согласно проектного профиля.</li>
+                            <li class="mb-2">Разборка - сборка КНБК между рейсами с целью проведения необходимых технологических мероприятий и регламентных работ по поддержанию телесистемы в рабочем состоянии.</li>
+                            <li class="mb-2">Разборка КНБК по окончанию работ.</li>
+                            <li>Демобилизационные работы, во время которых осуществляется подготовка телесистемы к перевозке на базу, сворачивание наземного оборудования, вывоз с буровой телесистемы и персонала.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="technology-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title" data-aos="fade-up">Телесистемы с электромагнитным каналом связи</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">В результате нескольких лет работы сегодня мы имеем собственное, надежное и технологичное телеметрическое оборудование</p>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h3 class="mb-4">Телесистемы типа ЗНК 108-178</h3>
+                    <p>Для производства работ по телеметрическому сопровождению используются телесистемы с электромагнитным каналом связи типа ЗНК 108-178. В зависимости от фактического диаметра скважины, телесистема собирается в корпусах 108мм или 178мм, причем все необходимое для работы оборудование имеется для обоих типоразмеров.</p>
+                    
+                    <div class="tech-details">
+                        <h4 class="mb-3">Технические характеристики комплекса (для диаметра 178мм)</h4>
+                        <div class="detail-item">
+                            <div class="detail-title">Диапазон измерений:</div>
+                            <ul class="mb-3">
+                                <li>Зенитного угла, град.: 0-180</li>
+                                <li>Азимута, град.: 0-360</li>
+                                <li>Угла установки отклонителя, град.: 0-360</li>
+                                <li>Забойной вибрации, g: 0-50</li>
+                                <li>Кажущегося сопротивления, Ом: 0-25,5</li>
+                            </ul>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">Погрешность измерений:</div>
+                            <ul class="mb-3">
+                                <li>Зенитного угла, град.: 0,2</li>
+                                <li>Азимута, град.: 2,0</li>
+                                <li>Угла установки отклонителя, град.: 2,0</li>
+                            </ul>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">Рабочие характеристики:</div>
+                            <ul>
+                                <li>Макс.рабочая температура, град.: 85</li>
+                                <li>Макс.гидростатическое давление, МПа: 60</li>
+                                <li>Мин.расход промывочной жидкости, л/с: 6(20)</li>
+                                <li>Доп.обороты ротора при турбинно-роторном способе бурения, об/мин.: 30</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="tech-details">
+                        <h4 class="mb-3">Забойный навигационный комплекс ЗНК 108-178</h4>
+                        <p>Состоит из забойной телесистемы и наземного приемно-обрабатывающего комплекса</p>
+                        
+                        <div class="detail-item">
+                            <div class="detail-title">В состав скважинного оборудования входит:</div>
+                            <ul class="mb-3">
+                                <li>разделитель электрический</li>
+                                <li>турбогенератор</li>
+                                <li>блок электронный</li>
+                                <li>блок-штанга (удлинитель датчика)</li>
+                                <li>инклинометрический блок (датчик APS)</li>
+                                <li>немагнитное УБТ</li>
+                            </ul>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">В состав наземного приемо-обрабатывающего комплекса входит:</div>
+                            <ul class="mb-3">
+                                <li>программное обеспечение «ЗАБОЙ»</li>
+                                <li>устройство сопряжения с объектом (УСО)</li>
+                                <li>компьютер NOTEBOOK</li>
+                                <li>провода связи на катушке (антенна, земля)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-title">Габаритные размеры телесистемы, мм:</div>
+                            <ul>
+                                <li>Диаметр: 108 (178)</li>
+                                <li>Длина: ~9000</li>
+                                <li>Масса телесистемы в сборе с НУБТ, кг: 400 (1400)</li>
+                                <li>Соединительные резьбы: 3-86 (3-147)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients-section py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title" data-aos="fade-up">Наши заказчики</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Основной персонал нашей организации выполняет аналогичные работы с 2002г. В числе наших заказчиков по проводке наклонно – направленных и горизонтальных скважин, а также боковых стволов:</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="client-card">
+                        <h4>ОАО «РОСПАН - Интернешнл»</h4>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="client-card">
+                        <h4>ООО «ЛУКОЙЛ-Пермь»</h4>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="client-card">
+                        <h4>ОАО «Саратовнефтегаз»</h4>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="client-card">
+                        <h4>ООО «БК Евразия»</h4>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="client-card">
+                        <h4>ОАО «Подзембургаз»</h4>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="client-card">
+                        <h4>ООО «Газпром бурение»</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-12 text-center" data-aos="fade-up">
+                    <p class="fs-5">А также недропользователи и буровые компании Саратовской области.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section id="equipment" class="equipment-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title" data-aos="fade-up">Прецизионная поверочная установка ППУ-3</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Предлагаем к поставке прецизионную поверочную установку ППУ-3.</p>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="equipment-card">
+                        <h3 class="mb-4">Назначение</h3>
+                        <p>Прецизионная поверочная установка ППУ-3 - предназначена для проверки и регулировки инклинометрических приборов по осям зенита, азимута, апсидальной плоскости.</p>
+                        <p>Важным достоинствами установки являются пониженные требования к однородности магнитного поля Земли в месте ее расположения. Это достигается за счет конструктивных особенностей установки, обеспечивающих расположение датчика азимута инклинометра в одном месте при любых зенитных углах.</p>
+                        <p>Для точной установки заданных зенитных и азимутальных углов ППУ-3 оснащена прецизионным винтовым механизмом, позволяющим выставлять заданные углы без последующей проверки контрольными приборами.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="equipment-card">
+                        <h3 class="mb-4">Технические характеристики</h3>
+                        <div class="equipment-specs">
+                            <div class="spec-item">
+                                <div class="spec-title">Точность установки зенитного угла(±180°)</div>
+                                <div class="spec-value">±0,05° ( 3")</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-title">Точность установки азимутального угла(0-360°)</div>
+                                <div class="spec-value">±0,05° ( 3")</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-title">Точность установки в апсидальной плоскости(0-360°)</div>
+                                <div class="spec-value">±0,5° (30")</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-title">Диаметр проверяемого датчика, мм</div>
+                                <div class="spec-value">любой менее 80</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-title">Габаритные размеры: высота, мм</div>
+                                <div class="spec-value">1730</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-title">Габаритные размеры: диаметр по опорам, мм</div>
+                                <div class="spec-value">1000</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-title">Вес ППУ-3, кг</div>
+                                <div class="spec-value">45</div>
+                            </div>
+                        </div>
+                        <p class="mt-4">Проверка твердотельных иклинометрических датчиков проводится на прецизионной поверочной установке ППУ-3, предназначенной для проверки и регулировки инклинометрических приборов по осям зенита, азимута, апсидальной плоскости. (Производство ООО «Навигация-сервис»).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title" data-aos="fade-up">Контакты</h2>
+                    <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Свяжитесь с нами для получения дополнительной информации</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="contact-card">
+                        <h3 class="mb-4 text-center">ООО «Навигация-сервис»</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="contact-info-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="contact-detail">
+                                        <h5>Руководство</h5>
+                                        <p>Директор: Алашков Сергей Владимирович<br>
+                                        Гл.инженер: Туницин Виктор Алексеевич</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-detail">
+                                        <h5>Адрес</h5>
+                                        <p>410003, г.Саратов, ул.Б.Горная, д.129А.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-info-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="contact-detail">
+                                        <h5>Телефон/Факс</h5>
+                                        <p>8 (845-2) 333-126</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-info-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-detail">
+                                        <h5>Email</h5>
+                                        <p>info@navserv.ru</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <svg width="40" height="40" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Drilling Tower -->
+                            <g fill="#ffffff">
+                                <rect x="20" y="10" width="40" height="5" rx="2" />
+                                <rect x="30" y="5" width="20" height="50" rx="2" />
+                                <rect x="20" y="45" width="40" height="5" rx="2" />
+                                <rect x="25" y="15" width="5" height="30" rx="1" />
+                                <rect x="35" y="15" width="5" height="30" rx="1" />
+                                <rect x="45" y="15" width="5" height="30" rx="1" />
+                            </g>
+                            
+                            <!-- Telemetry Waves -->
+                            <path fill="none" stroke="#17a2b8" stroke-width="3" stroke-linecap="round"
+                                d="M70,30 Q80,15 90,30 Q100,45 110,30 Q120,15 130,30" />
+                            <path fill="none" stroke="#17a2b8" stroke-width="2" stroke-linecap="round" 
+                                d="M70,40 Q80,25 90,40 Q100,55 110,40 Q120,25 130,40" />
+                        </svg>
+                        <h5 class="ms-2 mb-0">Навигация-сервис</h5>
+                    </div>
+                    <p>ООО «Навигация-сервис» осуществляет телеметрическое сопровождение бурения наклонных и горизонтальных скважин, боковых стволов, производит и поставляет телесистемы с электромагнитным каналом связи.</p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>Быстрые ссылки</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#technology">Телесистемы</a></li>
+                        <li><a href="#clients">Заказчики</a></li>
+                        <li><a href="#equipment">Оборудование</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5>Контактная информация</h5>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 410003, г.Саратов, ул.Б.Горная, д.129А</li>
+                        <li><i class="fas fa-phone"></i> 8 (845-2) 333-126</li>
+                        <li><i class="fas fa-envelope"></i> info@navserv.ru</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center copyright">
+                <p>&copy; 2025 ООО «Навигация-сервис». Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS - Animate On Scroll Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

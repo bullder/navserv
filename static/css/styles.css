@@ -1,0 +1,487 @@
+/* Global Styles */
+:root {
+    --primary-color: #0056b3;
+    --secondary-color: #17a2b8;
+    --accent-color: #ffc107;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --gray-color: #6c757d;
+    --light-gray-color: #e9ecef;
+    --dark-blue: #003366;
+    --body-font: 'Roboto', sans-serif;
+    --heading-font: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--body-font);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+    font-weight: 600;
+}
+
+/* Navbar Styles */
+.navbar {
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.navbar.scrolled {
+    background-color: var(--dark-blue) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+.waitlist-btn {
+    background-color: var(--primary-color);
+    color: white !important;
+    border-radius: 50px;
+    padding: 0.5rem 1.25rem !important;
+}
+
+.waitlist-btn:hover {
+    background-color: var(--dark-blue);
+    color: white !important;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    background: url('https://images.unsplash.com/photo-1474692321929-4d0c27302b7e') center/cover no-repeat;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-top: 76px; /* Navbar height */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 0, 0, 0.7));
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.hero-section .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.hero-image {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Styles */
+.section-title {
+    position: relative;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-blue);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 1rem auto 0;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-color);
+    margin-bottom: 3rem;
+}
+
+/* Services Section */
+.services-section {
+    background-color: var(--light-color);
+    padding: 6rem 0;
+}
+
+.service-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--dark-blue);
+}
+
+/* Technology Section */
+.technology-section {
+    padding: 6rem 0;
+    background-color: white;
+}
+
+.tech-features {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 2rem;
+}
+
+.tech-features li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--light-gray-color);
+}
+
+.tech-features li i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+}
+
+.tech-image-grid {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Features Section */
+.features-section {
+    padding: 6rem 0;
+    background-color: var(--light-color);
+}
+
+.feature-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    background-color: var(--primary-color);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--dark-blue);
+}
+
+/* About Section */
+.about-section {
+    padding: 6rem 0;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-image-container {
+    position: relative;
+}
+
+.about-image-overlay {
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 60%;
+    z-index: -1;
+}
+
+.about-stats {
+    margin-top: 2.5rem;
+}
+
+.stat-card {
+    background-color: var(--light-color);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Telemetry Showcase Section */
+.telemetry-showcase {
+    background-color: var(--light-color);
+    padding: 6rem 0;
+}
+
+.telemetry-text h3 {
+    font-size: 2rem;
+    color: var(--dark-blue);
+    margin-bottom: 1.5rem;
+}
+
+.telemetry-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 2rem;
+}
+
+.telemetry-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--light-gray-color);
+}
+
+.telemetry-list li i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+}
+
+.telemetry-image-grid {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Equipment Section */
+.equipment-section {
+    padding: 6rem 0;
+}
+
+.equipment-card {
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.equipment-card:hover {
+    transform: translateY(-10px);
+}
+
+.equipment-image {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-card h3 {
+    font-size: 1.3rem;
+    color: var(--dark-blue);
+    margin-bottom: 0.75rem;
+}
+
+/* Waitlist Section */
+.waitlist-section {
+    background-color: var(--light-color);
+    padding: 6rem 0;
+}
+
+.waitlist-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.waitlist-card h2 {
+    color: var(--dark-blue);
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-blue);
+    color: white;
+}
+
+.footer h5 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.footer-links, .contact-info {
+    list-style: none;
+    padding-left: 0;
+}
+
+.footer-links li, .contact-info li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+    margin-left: 5px;
+}
+
+.contact-info i {
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.footer-legal-link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.footer-legal-link:hover {
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .about-image-overlay {
+        bottom: -30px;
+        right: -30px;
+    }
+    
+    .waitlist-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 500px;
+        height: auto;
+        padding: 120px 0 80px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .about-image-overlay {
+        position: static;
+        width: 100%;
+        margin-top: 30px;
+    }
+    
+    .about-section .order-lg-1 {
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section {
+        padding: 100px 0 60px;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.75rem;
+    }
+    
+    .service-card, .feature-card, .waitlist-card {
+        padding: 1.5rem;
+    }
+}
