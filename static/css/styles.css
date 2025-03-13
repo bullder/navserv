@@ -1,22 +1,23 @@
-/* Global Styles */
 :root {
-    --primary-color: #0056b3;
+    --primary-color: #0d6efd;
     --secondary-color: #17a2b8;
     --accent-color: #ffc107;
     --light-color: #f8f9fa;
-    --dark-color: #343a40;
+    --dark-color: #212529;
+    --darker-color: #141619;
     --gray-color: #6c757d;
-    --light-gray-color: #e9ecef;
-    --dark-blue: #003366;
+    --light-gray-color: #343a40;
+    --dark-blue: #0d47a1;
     --body-font: 'Roboto', sans-serif;
     --heading-font: 'Montserrat', sans-serif;
 }
 
 body {
     font-family: var(--body-font);
-    color: #333;
+    color: #e9ecef;
     line-height: 1.6;
     overflow-x: hidden;
+    background-color: var(--dark-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -28,13 +29,8 @@ h1, h2, h3, h4, h5, h6 {
 .navbar {
     transition: all 0.3s ease;
     padding: 1rem 0;
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-.navbar.scrolled {
-    background-color: var(--dark-blue) !important;
+    background-color: var(--dark-blue);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 0;
 }
 
 .navbar-brand {
@@ -50,6 +46,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.5rem 1rem !important;
     margin: 0 0.25rem;
     transition: all 0.3s ease;
+    color: white !important;
 }
 
 .nav-link:hover {
@@ -64,8 +61,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .waitlist-btn:hover {
-    background-color: var(--dark-blue);
-    color: white !important;
+    background-color: var(--accent-color);
+    color: var(--dark-blue) !important;
 }
 
 /* Hero Section */
@@ -73,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     height: 100vh;
     min-height: 600px;
-    background: url('../images/img1.avif') center/cover no-repeat;
+    background: url('../images/img1.webp') center/cover no-repeat;
     color: white;
     display: flex;
     align-items: center;
@@ -96,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-section h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 1.2;
     margin-bottom: 1.5rem;
 }
@@ -137,17 +134,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Services Section */
 .services-section {
-    background-color: var(--light-color);
+    background-color: var(--darker-color);
     padding: 6rem 0;
 }
 
 .service-card {
-    background-color: white;
+    background-color: var(--dark-color);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     height: 100%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--light-color);
 }
 
 .service-card:hover {
@@ -170,7 +168,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Technology Section */
 .technology-section {
     padding: 6rem 0;
-    background-color: white;
+    background-color: var(--dark-color);
+    color: var(--light-color);
 }
 
 .tech-features {
@@ -189,170 +188,124 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 1rem;
 }
 
+.tech-details {
+    margin-top: 2rem;
+}
+
+.tech-details .detail-item {
+    margin-bottom: 1rem;
+}
+
+.tech-details .detail-title {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
 .tech-image-grid {
     border-radius: 10px;
     overflow: hidden;
 }
 
-/* Features Section */
-.features-section {
+/* Clients Section */
+.clients-section {
     padding: 6rem 0;
-    background-color: var(--light-color);
+    background-color: var(--darker-color);
+    color: var(--light-color);
 }
 
-.feature-card {
-    background-color: white;
+.client-card {
+    background-color: var(--dark-color);
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     height: 100%;
     transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-color);
 }
 
-.feature-card:hover {
+.client-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.feature-icon {
-    background-color: var(--primary-color);
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: white;
-    margin-bottom: 1.5rem;
-}
-
-.feature-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--dark-blue);
-}
-
-/* About Section */
-.about-section {
-    padding: 6rem 0;
-}
-
-.about-text {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-.about-image-container {
-    position: relative;
-}
-
-.about-image-overlay {
-    position: absolute;
-    bottom: -50px;
-    right: -50px;
-    width: 60%;
-    z-index: -1;
-}
-
-.about-stats {
-    margin-top: 2.5rem;
-}
-
-.stat-card {
-    background-color: var(--light-color);
-    padding: 1.5rem 1rem;
-    text-align: center;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.stat-card h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-/* Telemetry Showcase Section */
-.telemetry-showcase {
-    background-color: var(--light-color);
-    padding: 6rem 0;
-}
-
-.telemetry-text h3 {
-    font-size: 2rem;
-    color: var(--dark-blue);
-    margin-bottom: 1.5rem;
-}
-
-.telemetry-list {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 2rem;
-}
-
-.telemetry-list li {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--light-gray-color);
-}
-
-.telemetry-list li i {
-    color: var(--primary-color);
-    margin-right: 1rem;
-}
-
-.telemetry-image-grid {
-    border-radius: 10px;
-    overflow: hidden;
+.client-logo {
+    max-width: 160px;
+    height: auto;
+    margin: 0 auto;
 }
 
 /* Equipment Section */
 .equipment-section {
     padding: 6rem 0;
+    background-color: var(--dark-color);
+    color: var(--light-color);
 }
 
 .equipment-card {
-    text-align: center;
+    background-color: var(--darker-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    height: 100%;
     transition: all 0.3s ease;
+    color: var(--light-color);
 }
 
 .equipment-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.equipment-image {
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.equipment-specs {
+    margin-top: 2rem;
 }
 
-.equipment-card h3 {
-    font-size: 1.3rem;
-    color: var(--dark-blue);
+.equipment-specs .spec-item {
     margin-bottom: 0.75rem;
+    display: flex;
 }
 
-/* Waitlist Section */
-.waitlist-section {
-    background-color: var(--light-color);
+.equipment-specs .spec-title {
+    min-width: 180px;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* Contact Section */
+.contact-section {
     padding: 6rem 0;
+    background-color: var(--darker-color);
+    color: var(--light-color);
 }
 
-.waitlist-card {
-    background-color: white;
+.contact-card {
+    background-color: var(--dark-color);
     border-radius: 15px;
     padding: 3rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: var(--light-color);
 }
 
-.waitlist-card h2 {
-    color: var(--dark-blue);
+.contact-info-item {
+    display: flex;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-right: 1rem;
+    min-width: 30px;
+}
+
+.contact-detail h5 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
 }
 
 .form-label {
@@ -363,6 +316,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer {
     background-color: var(--dark-blue);
     color: white;
+    padding: 4rem 0 2rem;
 }
 
 .footer h5 {
@@ -419,26 +373,16 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
-.footer-legal-link {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    margin-left: 1.5rem;
-    transition: all 0.3s ease;
-}
-
-.footer-legal-link:hover {
-    color: white;
+.copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    margin-top: 3rem;
 }
 
 /* Responsive Styles */
 @media (max-width: 992px) {
     .hero-section h1 {
         font-size: 2.5rem;
-    }
-    
-    .about-image-overlay {
-        bottom: -30px;
-        right: -30px;
     }
     
     .waitlist-card {
@@ -461,12 +405,6 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.75rem;
     }
     
-    .about-image-overlay {
-        position: static;
-        width: 100%;
-        margin-top: 30px;
-    }
-    
     .about-section .order-lg-1 {
         margin-top: 3rem;
     }
@@ -481,7 +419,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.75rem;
     }
     
-    .service-card, .feature-card, .waitlist-card {
+    .service-card, .equipment-card, .contact-card {
         padding: 1.5rem;
     }
 }
